@@ -59,3 +59,10 @@ def stocGradAscent1(dataMatrix , classLabels , numIter = 150):
 			weights = weights + alpha * error * dataMatrix[randIndex]
 			del(dataIndex[randIndex])
 	return weights;
+
+def classifyVector(inX , weights):
+	prob = sigmoid(sum(inX * weights))
+	if prob > 0.5:
+		return 1
+	else:
+		return 0
