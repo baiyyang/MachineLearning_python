@@ -21,6 +21,7 @@ def stumpClassify(dataMatrix , dimen , threshVal , threshIneq):
 		retArray[dataMatrix[: , dimen] > threshVal] = -1.0
 	return retArray
 
+#输入分别是样本集，分类集，和每个样本的权重
 def buildStump(dataArr , classLabels , D):
 	dataMatrix = mat(dataArr)
 	labelMat = mat(classLabels).T
