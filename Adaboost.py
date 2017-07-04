@@ -73,3 +73,16 @@ def adaBoostTrainDS(dataArr , classLabels , numIt = 40):
 		if errorRate == 0.0:
 			break
 	return weakClassArr
+
+#分类函数 , 输入分别为测试集和多个弱分类器
+def adaClassify(datToClass , classifierArr):
+	dataMatrix = mat(datToClass)
+	m = shape(dataMatrix)[0]
+	aggClassEst = mat(zeros((m , 1)))
+	for i in range(len(classifierArr)):
+		classEst = stumpClassify(dataMatrix , classifierArr[i]['dim'], \
+			classifierArr[i]['thresh'] , \
+			classifierArr[i]['ineq'])
+		aggClassEst += classifierArr[i]['alpha'] * classEst
+		print aggClassEst
+	return sign(aggClassEst)
