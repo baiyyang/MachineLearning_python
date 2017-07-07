@@ -81,3 +81,32 @@ def ridgeTest(xArr , yArr):
 		ws = ridgeRegres(xMat , yMat , exp(i-10))
 		wMat[i , :] = ws.T
 	return wMat
+
+#前向逐步回归
+#输入参数分别是输入参数，预测变量，每次迭代调整的步长，和迭代的次数
+def stageWise(xArr , yArr , eps = 0.01 numIt = 100):
+	xMat = mat(xArr)
+	yMat = mat(yArr).T
+	yMean = mean(yMat , 0)
+	yMat = yMat - yMean
+	xMat = regularize(xMat)
+	m , n = shape(xMat)
+	returnMat = zeros((numIt , n))
+	ws = zeros((n , 1))
+	wsTest = ws.copy()
+	wsMax = ws.copy()
+	for i in rannge(numIt):
+		print ws.T
+		lowestError = inf
+		for j in range(n):
+			for sign in [-1 , 1]:
+				wsTest = ws.copy()
+				wsTest[j] += eps*sign
+				yTest = xMat * wsTest
+				rssE = rssError(yMat.A , yTest.A)
+				if rssE < lowestError:
+					lowestError = rssE
+					wsMax = wsTest
+		ws = wsMax.copy()
+		returnMat[i , :] = ws.T
+	return returnMat
