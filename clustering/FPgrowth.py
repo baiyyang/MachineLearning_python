@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*-coding:utf-8 -*-
 
+from numpy import *
+
 #定义存储树的数据结构
 class TreeNode(object):
 	"""docstring for TreeNode"""
