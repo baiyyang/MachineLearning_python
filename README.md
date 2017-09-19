@@ -5,6 +5,6 @@ Great minds have purpose, others have wishes.  
 K-Nearest-Neighbor , DecisionTree , Bayes , LogRegres , AdaBoost , SVM  
 CART , LinearRegression  
 Apriori , FPGrowth , KMeans  
-PCA , SVD
+PCA , SVD ......
 
 
